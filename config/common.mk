@@ -50,6 +50,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/lucid/prebuilt/common/etc/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
 
+# Backup Services whitelist
+PRODUCT_COPY_FILES += \
+    vendor/lucid/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+
 # Common overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/lucid/overlay/common
 
