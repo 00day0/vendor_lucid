@@ -50,6 +50,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/fi/prebuilt/common/etc/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
 
+# Backup Services whitelist
+PRODUCT_COPY_FILES += \
+    vendor/fi/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+
 # Set custom volume steps
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.media_vol_steps=30 \
