@@ -4,7 +4,9 @@
 #
 L="log -p i -t cm"
 
-$L "____ _   _ ____ _  _ ____ ____ ____ _  _ _  _ ____ ___";
-$L "|     \\_/  |__| |\\ | |  | | __ |___ |\\ | |\\/| |  | |  \\";
-$L "|___   |   |  | | \\| |__| |__] |___ | \\| |  | |__| |__/";
-$L "Welcome to Android `getprop ro.build.version.release` / CyanogenMod-`getprop ro.cm.version`";
+$L "  o-o"
+$L " o   o "
+$L " |   | o-o o-o o-o  o-o "
+$L " o   o  /  | | |  | |- "
+$L "  o-o  o-o o-o o  o o-o"
+$L "Welcome to Android `getprop ro.build.version.release` / Ozone-`getprop ro.ozone.version`";
