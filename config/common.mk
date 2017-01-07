@@ -322,6 +322,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.modversion=$(OZONE_VERSION) \
   ro.cmlegal.url=https://lineageos.org/legal
 
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+  vendor/cm/build/target/product/security/ozone
+
 -include vendor/cm-priv/keys/keys.mk
 
 CM_DISPLAY_VERSION := $(OZONE_VERSION)
