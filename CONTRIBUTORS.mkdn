@@ -1,7 +1,0 @@
-OzoneOS
-===========
-
-Maintainers (LineageOS 14.1):
------------------------------
-* __Xiaomi Pocophone F1 (beryllium):__ devabhixda
-
