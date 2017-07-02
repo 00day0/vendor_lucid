@@ -310,6 +310,7 @@ endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ozone.version=$(OZONE_VERSION) \
+    ro.ozone.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
     ro.ozone.releasetype=$(OZONE_BUILDTYPE) \
     ro.modversion=$(OZONE_VERSION) \
     ro.ozonelegal.url=https://ozoneos.org/legal
