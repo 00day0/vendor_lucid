@@ -33,41 +33,41 @@ endif
 
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
-    vendor/cm/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
+    vendor/ozone/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/cm/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/cm/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
-    vendor/cm/prebuilt/common/bin/blacklist:system/addon.d/blacklist
+    vendor/ozone/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/ozone/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/ozone/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
+    vendor/ozone/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/cm/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+    vendor/ozone/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
+    vendor/ozone/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/ozone/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
+    vendor/ozone/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # userinit support
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
+    vendor/ozone/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 endif
 
 # CM-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
+    vendor/ozone/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
+    vendor/ozone/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -79,22 +79,22 @@ PRODUCT_COPY_FILES += \
 
 # This is CM!
 PRODUCT_COPY_FILES += \
-    vendor/cm/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
+    vendor/ozone/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
 # Include CM audio files
-include vendor/cm/config/cm_audio.mk
+include vendor/ozone/config/cm_audio.mk
 
 # Theme engine
-include vendor/cm/config/themes_common.mk
+include vendor/ozone/config/themes_common.mk
 
 ifneq ($(TARGET_DISABLE_CMSDK), true)
 # CMSDK
-include vendor/cm/config/cmsdk_common.mk
+include vendor/ozone/config/cmsdk_common.mk
 endif
 
 # TWRP
 ifeq ($(WITH_TWRP),true)
-include vendor/cm/config/twrp.mk
+include vendor/ozone/config/twrp.mk
 endif
 
 # Bootanimation
@@ -214,7 +214,7 @@ PRODUCT_PACKAGES += \
 endif
 endif
 
-DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
+DEVICE_PACKAGE_OVERLAYS += vendor/ozone/overlay/common
 
 PRODUCT_VERSION_MAJOR = 14
 PRODUCT_VERSION_MINOR = 1
@@ -300,10 +300,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cm.version=$(OZONE_VERSION) \
     ro.cm.releasetype=$(CM_BUILDTYPE) \
     ro.modversion=$(OZONE_VERSION) \
-    ro.cmlegal.url=https://lineageos.org/legal
+    ro.cmlegal.url=https://ozoneos.org/legal
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    vendor/cm/build/target/product/security/ozone
+    vendor/ozone/build/target/product/security/ozone
 
 -include vendor/cm-priv/keys/keys.mk
 
@@ -336,7 +336,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cm.display.version=$(CM_DISPLAY_VERSION)
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
--include vendor/cm/config/partner_gms.mk
+-include vendor/ozone/config/partner_gms.mk
 -include vendor/cyngn/product.mk
 
 $(call prepend-product-if-exists, vendor/extra/product.mk)
