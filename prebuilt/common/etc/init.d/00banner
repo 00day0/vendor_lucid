@@ -2,7 +2,7 @@
 #
 # Print startup info
 #
-L="log -p i -t cm"
+L="log -p i -t ozone"
 
 $L "  o-o"
 $L " o   o "

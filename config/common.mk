@@ -31,15 +31,11 @@ ifneq ($(TARGET_BUILD_VARIANT),eng)
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
 endif
 
-# Copy over the changelog to the device
-PRODUCT_COPY_FILES += \
-    vendor/ozone/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
-
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/ozone/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
     vendor/ozone/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/ozone/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
+    vendor/ozone/prebuilt/common/bin/50-ozone.sh:system/addon.d/50-ozone.sh \
     vendor/ozone/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 # Backup Services whitelist
@@ -61,9 +57,9 @@ PRODUCT_COPY_FILES += \
     vendor/ozone/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 endif
 
-# CM-specific init file
+# Ozone-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/ozone/prebuilt/common/etc/init.local.rc:root/init.cm.rc
+    vendor/ozone/prebuilt/common/etc/init.local.rc:root/init.ozone.rc
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
@@ -77,12 +73,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl
 
-# This is CM!
+# This is Ozone!
 PRODUCT_COPY_FILES += \
     vendor/ozone/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
-# Include CM audio files
-include vendor/ozone/config/cm_audio.mk
+# Include Ozone audio files
+include vendor/ozone/config/ozone_audio.mk
 
 # Theme engine
 include vendor/ozone/config/themes_common.mk
@@ -101,14 +97,14 @@ endif
 PRODUCT_PACKAGES += \
     bootanimation.zip
 
-# Required CM packages
+# Required Ozone packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
     Development \
     Profiles \
     WeatherManagerService
 
-# Optional CM packages
+# Optional packages
 PRODUCT_PACKAGES += \
     libemoji \
     LiveWallpapersPicker \
@@ -120,7 +116,26 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
 
-# Extra tools in CM
+# Custom Ozone packages
+PRODUCT_PACKAGES += \
+    AudioFX \
+    CMSettingsProvider \
+    CMUpdater \
+    OzoneSetupWizard \
+    Eleven \
+    ExactCalculator \
+    Jelly \
+    LiveLockScreenService \
+    LockClock \
+    Trebuchet \
+    WallpaperPicker \
+    WeatherProvider
+
+# Exchange support
+PRODUCT_PACKAGES += \
+    Exchange2
+
+# Extra tools in Ozone
 PRODUCT_PACKAGES += \
     7z \
     bash \
@@ -148,12 +163,12 @@ PRODUCT_PACKAGES += \
     zip
 
 # Custom off-mode charger
-ifneq ($(WITH_CM_CHARGER),false)
+ifneq ($(WITH_OZONE_CHARGER),false)
 PRODUCT_PACKAGES += \
     charger_res_images \
-    cm_charger_res_images \
+    ozone_charger_res_images \
     font_log.png \
-    libhealthd.cm
+    libhealthd.ozone
 endif
 
 # ExFAT support
@@ -216,124 +231,124 @@ endif
 
 DEVICE_PACKAGE_OVERLAYS += vendor/ozone/overlay/common
 
-PRODUCT_VERSION_MAJOR = 14
-PRODUCT_VERSION_MINOR = 1
+PRODUCT_VERSION_MAJOR = 15
+PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE := 0
 
 ifeq ($(TARGET_VENDOR_SHOW_MAINTENANCE_VERSION),true)
-    CM_VERSION_MAINTENANCE := $(PRODUCT_VERSION_MAINTENANCE)
+    OZONE_VERSION_MAINTENANCE := $(PRODUCT_VERSION_MAINTENANCE)
 else
-    CM_VERSION_MAINTENANCE := 0
+    OZONE_VERSION_MAINTENANCE := 0
 endif
 
-# Set CM_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
+# Set OZONE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
 
-ifndef CM_BUILDTYPE
+ifndef OZONE_BUILDTYPE
     ifdef RELEASE_TYPE
-        # Starting with "CM_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^CM_||g')
-        CM_BUILDTYPE := $(RELEASE_TYPE)
+        # Starting with "OZONE_" is optional
+        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^OZONE_||g')
+        OZONE_BUILDTYPE := $(RELEASE_TYPE)
     endif
 endif
 
 # Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(CM_BUILDTYPE)),)
-    CM_BUILDTYPE :=
+ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(OZONE_BUILDTYPE)),)
+    OZONE_BUILDTYPE :=
 endif
 
-ifdef CM_BUILDTYPE
-    ifneq ($(CM_BUILDTYPE), SNAPSHOT)
-        ifdef CM_EXTRAVERSION
+ifdef OZONE_BUILDTYPE
+    ifneq ($(OZONE_BUILDTYPE), SNAPSHOT)
+        ifdef OZONE_EXTRAVERSION
             # Force build type to EXPERIMENTAL
-            CM_BUILDTYPE := EXPERIMENTAL
-            # Remove leading dash from CM_EXTRAVERSION
-            CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
-            # Add leading dash to CM_EXTRAVERSION
-            CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
+            OZONE_BUILDTYPE := EXPERIMENTAL
+            # Remove leading dash from OZONE_EXTRAVERSION
+            OZONE_EXTRAVERSION := $(shell echo $(OZONE_EXTRAVERSION) | sed 's/-//')
+            # Add leading dash to OZONE_EXTRAVERSION
+            OZONE_EXTRAVERSION := -$(OZONE_EXTRAVERSION)
         endif
     else
-        ifndef CM_EXTRAVERSION
+        ifndef OZONE_EXTRAVERSION
             # Force build type to EXPERIMENTAL, SNAPSHOT mandates a tag
-            CM_BUILDTYPE := EXPERIMENTAL
+            OZONE_BUILDTYPE := EXPERIMENTAL
         else
-            # Remove leading dash from CM_EXTRAVERSION
-            CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
-            # Add leading dash to CM_EXTRAVERSION
-            CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
+            # Remove leading dash from OZONE_EXTRAVERSION
+            OZONE_EXTRAVERSION := $(shell echo $(OZONE_EXTRAVERSION) | sed 's/-//')
+            # Add leading dash to OZONE_EXTRAVERSION
+            OZONE_EXTRAVERSION := -$(OZONE_EXTRAVERSION)
         endif
     endif
 else
-    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := UNOFFICIAL
-    CM_EXTRAVERSION :=
+    # If OZONE_BUILDTYPE is not defined, set to UNOFFICIAL
+    OZONE_BUILDTYPE := UNOFFICIAL
+    OZONE_EXTRAVERSION :=
 endif
 
-ifeq ($(CM_BUILDTYPE), UNOFFICIAL)
+ifeq ($(OZONE_BUILDTYPE), UNOFFICIAL)
     ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        CM_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
+        OZONE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
     endif
 endif
 
-ifeq ($(CM_BUILDTYPE), RELEASE)
+ifeq ($(OZONE_BUILDTYPE), RELEASE)
     ifndef TARGET_VENDOR_RELEASE_BUILD_ID
-        OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
+        OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(OZONE_BUILD)
     else
         ifeq ($(TARGET_BUILD_VARIANT),user)
-            ifeq ($(CM_VERSION_MAINTENANCE),0)
-                OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(CM_BUILD)
+            ifeq ($(OZONE_VERSION_MAINTENANCE),0)
+                OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(OZONE_BUILD)
             else
-                OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(CM_VERSION_MAINTENANCE)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(CM_BUILD)
+                OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(OZONE_VERSION_MAINTENANCE)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(OZONE_BUILD)
             endif
         else
-            OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
+            OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(OZONE_BUILD)
         endif
     endif
 else
-    ifeq ($(CM_VERSION_MAINTENANCE),0)
-        OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)$(CM_EXTRAVERSION)-$(CM_BUILD)
+    ifeq ($(OZONE_VERSION_MAINTENANCE),0)
+        OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(OZONE_BUILDTYPE)$(OZONE_EXTRAVERSION)-$(OZONE_BUILD)
     else
-        OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(CM_VERSION_MAINTENANCE)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)$(CM_EXTRAVERSION)-$(CM_BUILD)
+        OZONE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(OZONE_VERSION_MAINTENANCE)-$(shell date -u +%Y%m%d)-$(OZONE_BUILDTYPE)$(OZONE_EXTRAVERSION)-$(OZONE_BUILD)
     endif
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.cm.version=$(OZONE_VERSION) \
-    ro.cm.releasetype=$(CM_BUILDTYPE) \
+    ro.ozone.version=$(OZONE_VERSION) \
+    ro.ozone.releasetype=$(OZONE_BUILDTYPE) \
     ro.modversion=$(OZONE_VERSION) \
-    ro.cmlegal.url=https://ozoneos.org/legal
+    ro.ozonelegal.url=https://ozoneos.org/legal
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/ozone/build/target/product/security/ozone
 
--include vendor/cm-priv/keys/keys.mk
+-include vendor/ozone-priv/keys/keys.mk
 
-CM_DISPLAY_VERSION := $(OZONE_VERSION)
+OZONE_DISPLAY_VERSION := $(OZONE_VERSION)
 
 ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),)
 ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),build/target/product/security/testkey)
-    ifneq ($(CM_BUILDTYPE), UNOFFICIAL)
+    ifneq ($(OZONE_BUILDTYPE), UNOFFICIAL)
         ifndef TARGET_VENDOR_RELEASE_BUILD_ID
-            ifneq ($(CM_EXTRAVERSION),)
-                # Remove leading dash from CM_EXTRAVERSION
-                CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
-                TARGET_VENDOR_RELEASE_BUILD_ID := $(CM_EXTRAVERSION)
+            ifneq ($(OZONE_EXTRAVERSION),)
+                # Remove leading dash from OZONE_EXTRAVERSION
+                OZONE_EXTRAVERSION := $(shell echo $(OZONE_EXTRAVERSION) | sed 's/-//')
+                TARGET_VENDOR_RELEASE_BUILD_ID := $(OZONE_EXTRAVERSION)
             else
                 TARGET_VENDOR_RELEASE_BUILD_ID := $(shell date -u +%Y%m%d)
             endif
         else
             TARGET_VENDOR_RELEASE_BUILD_ID := $(TARGET_VENDOR_RELEASE_BUILD_ID)
         endif
-        ifeq ($(CM_VERSION_MAINTENANCE),0)
-            CM_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(CM_BUILD)
+        ifeq ($(OZONE_VERSION_MAINTENANCE),0)
+            OZONE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(OZONE_BUILD)
         else
-            CM_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(CM_VERSION_MAINTENANCE)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(CM_BUILD)
+            OZONE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(OZONE_VERSION_MAINTENANCE)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(OZONE_BUILD)
         endif
     endif
 endif
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.cm.display.version=$(CM_DISPLAY_VERSION)
+    ro.ozone.display.version=$(OZONE_DISPLAY_VERSION)
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/ozone/config/partner_gms.mk

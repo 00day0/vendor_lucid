@@ -1,7 +1,7 @@
 #!/sbin/sh
-# 
-# /system/addon.d/50-cm.sh
-# During a Ozone upgrade, this script backs up /system/etc/hosts,
+#
+# /system/addon.d/50-ozone.sh
+# During a Ozone 15.0 upgrade, this script backs up /system/etc/hosts,
 # /system is formatted and reinstalled, then the file is restored.
 #
 
