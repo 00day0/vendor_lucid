@@ -5,9 +5,6 @@ Additional Ozone functions:
 - mmp:             Builds all of the modules in the current directory and pushes them to the device.
 - mmap:            Builds all of the modules in the current directory and its dependencies, then pushes the package to the device.
 - mmmp:            Builds all of the modules in the supplied directories and pushes them to the device.
-- mms:             Short circuit builder. Quickly re-build the kernel, rootfs, boot and system images
-                   without deep dependencies. Requires the full build to have run before.
-
 - aospremote:      Add git remote for matching AOSP repository.
 - cafremote:       Add git remote for matching CodeAurora repository.
 - mka:             Builds using SCHED_BATCH on all processors.
@@ -408,29 +405,6 @@ function cmka() {
         mka clean
         mka
     fi
-}
-
-function mms() {
-    local T=$(gettop)
-    if [ -z "$T" ]
-    then
-        echo "Couldn't locate the top of the tree.  Try setting TOP."
-        return 1
-    fi
-
-    case `uname -s` in
-        Darwin)
-            local NUM_CPUS=$(sysctl hw.ncpu|cut -d" " -f2)
-            ONE_SHOT_MAKEFILE="__none__" \
-                make -C $T -j $NUM_CPUS "$@"
-            ;;
-        *)
-            local NUM_CPUS=$(grep "^processor" /proc/cpuinfo | wc -l)
-            ONE_SHOT_MAKEFILE="__none__" \
-                mk_timer schedtool -B -n 1 -e ionice -n 1 \
-                make -C $T -j $NUM_CPUS "$@"
-            ;;
-    esac
 }
 
 function repolastsync() {
