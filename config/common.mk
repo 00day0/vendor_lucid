@@ -88,9 +88,6 @@ PRODUCT_COPY_FILES += \
 # Include Ozone audio files
 include vendor/ozone/config/ozone_audio.mk
 
-# Theme engine
-include vendor/ozone/config/themes_common.mk
-
 ifneq ($(TARGET_DISABLE_CMSDK), true)
 # CMSDK
 include vendor/ozone/config/cmsdk_common.mk
