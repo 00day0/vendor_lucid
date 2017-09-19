@@ -83,14 +83,14 @@ PRODUCT_COPY_FILES += \
 
 # This is Ozone!
 PRODUCT_COPY_FILES += \
-    vendor/ozone/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
+    vendor/ozone/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.ozone.android.xml
 
 # Include Ozone audio files
 include vendor/ozone/config/ozone_audio.mk
 
-ifneq ($(TARGET_DISABLE_CMSDK), true)
-# CMSDK
-include vendor/ozone/config/cmsdk_common.mk
+ifneq ($(TARGET_DISABLE_OZONE_SDK), true)
+# Ozone SDK
+include vendor/ozone/config/ozone_sdk_common.mk
 endif
 
 # TWRP
