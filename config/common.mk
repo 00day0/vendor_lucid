@@ -35,3 +35,7 @@ PRODUCT_COPY_FILES += \
     vendor/fi/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
 endif
 endif
+
+# Fix Google dialer
+PRODUCT_COPY_FILES += \
+    vendor/fi/prebuilt/common/etc/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
