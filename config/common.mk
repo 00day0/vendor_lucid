@@ -39,3 +39,7 @@ endif
 # Fix Google dialer
 PRODUCT_COPY_FILES += \
     vendor/lucid/prebuilt/common/etc/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
+
+# Disable Rescue Party
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.disable_rescue=true
