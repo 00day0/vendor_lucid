@@ -39,3 +39,7 @@ endif
 # Fix Google dialer
 PRODUCT_COPY_FILES += \
     vendor/ozone/prebuilt/common/etc/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
+
+# Set custom volume steps
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.media_vol_steps=30
