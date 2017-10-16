@@ -50,6 +50,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/ozone/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
+# Ozone-specific broadcast actions whitelist
+PRODUCT_COPY_FILES += \
+    vendor/ozone/config/permissions/ozone-sysconfig.xml:system/etc/sysconfig/ozone-sysconfig.xml
+
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
     vendor/ozone/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
