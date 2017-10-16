@@ -42,4 +42,5 @@ PRODUCT_COPY_FILES += \
 
 # Set custom volume steps
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.media_vol_steps=30
+    ro.config.media_vol_steps=30 \
+    ro.config.bt_sco_vol_steps=30
