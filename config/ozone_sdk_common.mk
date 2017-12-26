@@ -41,10 +41,10 @@ ifndef OZONE_PLATFORM_REV
 endif
 
 # CyanogenMod Platform SDK Version
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_GENERIC_PROPERTIES +=\
   ro.ozone.build.version.plat.sdk=$(OZONE_PLATFORM_SDK_VERSION)
 
 # CyanogenMod Platform Internal
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_GENERIC_PROPERTIES +=\
   ro.ozone.build.version.plat.rev=$(OZONE_PLATFORM_REV)
 
