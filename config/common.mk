@@ -162,10 +162,13 @@ PRODUCT_PACKAGES += \
     wget \
     zip
 
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 # Custom off-mode charger
 ifneq ($(WITH_OZONE_CHARGER),false)
 PRODUCT_PACKAGES += \
-    charger_res_images \
     ozone_charger_res_images \
     font_log.png \
     libhealthd.ozone
