@@ -304,13 +304,6 @@ else
     endif
 endif
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.ozone.version=$(OZONE_VERSION) \
-    ro.ozone.releasetype=$(OZONE_BUILDTYPE) \
-    ro.ozone.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.modversion=$(OZONE_VERSION) \
-    ro.ozonelegal.url=https://ozoneos.org/legal
-
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/ozone/build/target/product/security/ozone
 
@@ -340,9 +333,6 @@ ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),build/target/product/security/testkey)
     endif
 endif
 endif
-
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.ozone.display.version=$(OZONE_DISPLAY_VERSION)
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/ozone/config/partner_gms.mk

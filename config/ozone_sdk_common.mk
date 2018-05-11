@@ -39,12 +39,3 @@ ifndef OZONE_PLATFORM_REV
   # If you are doing a release and this is NOT 0, you are almost certainly doing it wrong
   OZONE_PLATFORM_REV := 0
 endif
-
-# CyanogenMod Platform SDK Version
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-  ro.ozone.build.version.plat.sdk=$(OZONE_PLATFORM_SDK_VERSION)
-
-# CyanogenMod Platform Internal
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-  ro.ozone.build.version.plat.rev=$(OZONE_PLATFORM_REV)
-
