@@ -19,6 +19,3 @@ INTERNAL_OZONE_PLATFORM_REMOVED_API_FILE := $(TARGET_OUT_COMMON_INTERMEDIATES)/P
 FRAMEWORK_OZONE_PLATFORM_API_FILE := $(TOPDIR)ozone-sdk/api/ozone_current.txt
 FRAMEWORK_OZONE_PLATFORM_REMOVED_API_FILE := $(TOPDIR)ozone-sdk/api/ozone_removed.txt
 FRAMEWORK_OZONE_API_NEEDS_UPDATE_TEXT := $(TOPDIR)vendor/ozone/build/core/apicheck_msg_current.txt
-
-
-BUILD_HTTP_PREBUILT := $(TOP)/vendor/ozone/build/core/http_prebuilt.mk
