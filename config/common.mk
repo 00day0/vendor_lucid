@@ -54,3 +54,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Disable Rescue Party
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.disable_rescue=true
+
+# We modify several neverallows, so let the build proceed
+ifneq ($(TARGET_BUILD_VARIANT),user)
+    SELINUX_IGNORE_NEVERALLOWS := true
+endif
