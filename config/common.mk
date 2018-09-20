@@ -58,6 +58,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Common overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/fi/overlay/common
 
+# Accents
+include vendor/fi/config/accents.mk
+
+# Themes
+include vendor/fi/config/themes.mk
+
 # Disable Rescue Party
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.disable_rescue=true
