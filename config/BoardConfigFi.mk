@@ -5,3 +5,5 @@ include vendor/fi/config/BoardConfigQcom.mk
 endif
 
 include vendor/fi/config/BoardConfigSoong.mk
+
+PRODUCT_SOONG_NAMESPACES += $(PATHMAP_SOONG_NAMESPACES)
