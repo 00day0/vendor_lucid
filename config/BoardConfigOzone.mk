@@ -5,3 +5,5 @@ include vendor/lucid/config/BoardConfigQcom.mk
 endif
 
 include vendor/lucid/config/BoardConfigSoong.mk
+
+PRODUCT_SOONG_NAMESPACES += $(PATHMAP_SOONG_NAMESPACES)
