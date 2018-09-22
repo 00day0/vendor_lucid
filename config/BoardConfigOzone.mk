@@ -5,3 +5,6 @@ include vendor/ozone/config/BoardConfigQcom.mk
 endif
 
 include vendor/ozone/config/BoardConfigSoong.mk
+
+PRODUCT_SOONG_NAMESPACES += $(PATHMAP_SOONG_NAMESPACES)
+
