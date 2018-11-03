@@ -12,3 +12,5 @@ PRODUCT_COPY_FILES += \
 # SIM Toolkit
 PRODUCT_PACKAGES += \
     Stk
+# Boot animations
+$(call inherit-product-if-exists, vendor/fi/products/bootanimation.mk)
