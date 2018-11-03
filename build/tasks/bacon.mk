@@ -16,6 +16,7 @@
 # FirangiOS OTA update package
 FI_TARGET_PACKAGE := $(PRODUCT_OUT)/FirangiOS-$(FI_VERSION).zip
 .PHONY: bacon
+firangi: bacon
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(FI_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(FI_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(FI_TARGET_PACKAGE).md5sum
