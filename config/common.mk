@@ -42,6 +42,10 @@ PRODUCT_COPY_FILES += \
 endif
 endif
 
+#Support Vendors
+PRODUCT_PACKAGES += \
+    VendorSupportLib
+
 # Fix Google dialer
 PRODUCT_COPY_FILES += \
     vendor/ozone/prebuilt/common/etc/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
