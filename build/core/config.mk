@@ -20,11 +20,6 @@ FRAMEWORK_OZONE_PLATFORM_API_FILE := $(TOPDIR)ozone-sdk/api/ozone_current.txt
 FRAMEWORK_OZONE_PLATFORM_REMOVED_API_FILE := $(TOPDIR)ozone-sdk/api/ozone_removed.txt
 FRAMEWORK_OZONE_API_NEEDS_UPDATE_TEXT := $(TOPDIR)vendor/ozone/build/core/apicheck_msg_current.txt
 
-# We modify several neverallows, so let the build proceed
-ifneq ($(TARGET_BUILD_VARIANT),user)
-SELINUX_IGNORE_NEVERALLOWS := true
-endif
-
 # Rules for MTK targets
 include $(TOPDIR)vendor/ozone/build/core/mtk_target.mk
 
