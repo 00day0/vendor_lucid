@@ -20,8 +20,9 @@ cc_library_headers {
     export_include_dirs: ["include"],
 }
 
-cc_defaults {
-    name: "libbfqio_defaults",
+cc_library {
+    name: "libbfqio",
+    vendor_available: true,
     srcs: [
         "bfqio.c",
     ],
@@ -40,16 +41,4 @@ cc_defaults {
         "-Wall",
         "-Wextra",
     ],
-}
-
-cc_library {
-    name: "libbfqio",
-    vendor_available: true,
-    defaults: ["libbfqio_defaults"],
-}
-
-cc_library {
-    name: "libbfqio_vendor",
-    vendor: true,
-    defaults: ["libbfqio_defaults"],
 }
