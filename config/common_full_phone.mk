@@ -14,3 +14,5 @@ PRODUCT_PACKAGES += \
     Stk
 # Boot animations
 $(call inherit-product-if-exists, vendor/fi/products/bootanimation.mk)
+#Apps
+$(call inherit-product, vendor/apps/config.mk)
