@@ -11,3 +11,7 @@ PRODUCT_COPY_FILES += \
    vendor/lucid/prebuilt/common/fonts/GoogleSans-BoldItalic.ttf:system/fonts/GoogleSans-BoldItalic.ttf
 
 ADDITIONAL_FONTS_FILE := vendor/lucid/prebuilt/common/fonts/google-sans.xml
+
+# Wellbeingconf
+PRODUCT_PACKAGES += \
+    wellbeingconf

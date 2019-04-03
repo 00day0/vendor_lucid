@@ -27,7 +27,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.disable_rescue=true \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
-    ro.build.selinux=1
+    ro.build.selinux=1 \
+    ro.boot.vendor.overlay.theme=com.lucid.wellbeingconf
 
 # LatinIME gesture typing
 ifneq ($(filter tenderloin,$(TARGET_PRODUCT)),)
@@ -56,6 +57,9 @@ PRODUCT_COPY_FILES += \
 
 # Common overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/lucid/overlay/common
+
+# Packages
+include vendor/lucid/config/packages.mk
 
 # Disable Rescue Party
 PRODUCT_PROPERTY_OVERRIDES += \
