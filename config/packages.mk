@@ -12,6 +12,7 @@ PRODUCT_COPY_FILES += \
 
 ADDITIONAL_FONTS_FILE := vendor/lucid/prebuilt/common/fonts/google-sans.xml
 
-# Wellbeingconf
+# Google Configs
 PRODUCT_PACKAGES += \
-    wellbeingconf
+    wellbeingconf \
+    googleconf
