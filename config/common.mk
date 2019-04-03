@@ -27,7 +27,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.disable_rescue=true \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
-    ro.build.selinux=1
+    ro.build.selinux=1 \
+    ro.boot.vendor.overlay.theme=com.ozone.wellbeingconf
 
 # LatinIME gesture typing
 ifneq ($(filter tenderloin,$(TARGET_PRODUCT)),)
@@ -61,6 +62,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Common overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/ozone/overlay/common
+
+# Packages
+include vendor/ozone/config/packages.mk
 
 # Disable Rescue Party
 PRODUCT_PROPERTY_OVERRIDES += \

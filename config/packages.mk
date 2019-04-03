@@ -11,3 +11,7 @@ PRODUCT_COPY_FILES += \
    vendor/ozone/prebuilt/common/fonts/GoogleSans-BoldItalic.ttf:system/fonts/GoogleSans-BoldItalic.ttf
 
 ADDITIONAL_FONTS_FILE := vendor/ozone/prebuilt/common/fonts/google-sans.xml
+
+#Wellbeingconf
+PRODUCT_PACKAGES += \
+    wellbeingconf
