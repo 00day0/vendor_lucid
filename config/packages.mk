@@ -14,4 +14,5 @@ ADDITIONAL_FONTS_FILE := vendor/fi/prebuilt/common/fonts/google-sans.xml
 
 #Wellbeingconf
 PRODUCT_PACKAGES += \
-    wellbeingconf
+    wellbeingconf \
+    googleconf
