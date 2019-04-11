@@ -87,6 +87,9 @@ PRODUCT_COPY_FILES += \
 # Include Ozone audio files
 include vendor/ozone/config/ozone_audio.mk
 
+# Include AOSP audio files
+include vendor/ozone/config/aosp_audio.mk
+
 ifneq ($(TARGET_DISABLE_OZONE_SDK), true)
 # Ozone SDK
 include vendor/ozone/config/ozone_sdk_common.mk
