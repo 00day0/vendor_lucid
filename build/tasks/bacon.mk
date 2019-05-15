@@ -16,6 +16,7 @@
 # Ozone OTA update package
 OZONE_TARGET_PACKAGE := $(PRODUCT_OUT)/Ozone-$(OZONE_VERSION).zip
 .PHONY: bacon
+ozone: bacon
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(OZONE_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(OZONE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(OZONE_TARGET_PACKAGE).md5sum
