@@ -68,3 +68,7 @@ include vendor/lucid/config/packages.mk
 # Disable Rescue Party
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.disable_rescue=true
+
+# Build nomenclature
+LUCID_PLATFORM_VERSION := 10.0
+LUCID_VERSION := $(LUCID_BUILD)-$(LUCID_PLATFORM_VERSION)-$(shell date -u +%Y%m%d)
