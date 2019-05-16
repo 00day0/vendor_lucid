@@ -70,6 +70,10 @@ include vendor/ozone/config/packages.mk
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.disable_rescue=true
 
+# Build nomenclature
+OZONE_PLATFORM_VERSION := 9.0
+OZONE_VERSION := $(OZONE_BUILD)-$(OZONE_PLATFORM_VERSION)-$(shell date -u +%Y%m%d)
+
 # We modify several neverallows, so let the build proceed
 ifneq ($(TARGET_BUILD_VARIANT),user)
     SELINUX_IGNORE_NEVERALLOWS := true
