@@ -20,8 +20,5 @@ FRAMEWORK_OZONE_PLATFORM_API_FILE := $(TOPDIR)ozone-sdk/api/ozone_current.txt
 FRAMEWORK_OZONE_PLATFORM_REMOVED_API_FILE := $(TOPDIR)ozone-sdk/api/ozone_removed.txt
 FRAMEWORK_OZONE_API_NEEDS_UPDATE_TEXT := $(TOPDIR)vendor/ozone/build/core/apicheck_msg_current.txt
 
-# Rules for MTK targets
-include $(TOPDIR)vendor/ozone/build/core/mtk_target.mk
-
 # Rules for QCOM targets
 include $(TOPDIR)vendor/ozone/build/core/qcom_target.mk
