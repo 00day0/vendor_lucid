@@ -38,7 +38,7 @@ checkapi-ozone : check-ozone-public-api
 # (See ozone-sdk/Android.mk)
 # we need to add api-stubs as additional dependency of the api check.
 
-$(INTERNAL_OZONE_PLATFORM_API_FILE): ozone-api-stubs-docs
+$(INTERNAL_OZONE_PLATFORM_API_FILE):
 
 # Check that the API we're building hasn't broken the last-released
 # SDK version.
