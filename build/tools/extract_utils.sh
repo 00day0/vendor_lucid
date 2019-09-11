@@ -519,6 +519,11 @@ function write_product_packages() {
         fi
         printf '    %s%s\n' "${PACKAGE_LIST[$i-1]}" "$LINEEND" >> "$PRODUCTMK"
     done
+
+    # Soong namespace
+    printf '\n%s\n' "PRODUCT_SOONG_NAMESPACES += \\" >> "$PRODUCTMK"
+    printf '    %s\n' "${OUTDIR}"  >> "$PRODUCTMK"
+
 }
 
 #
