@@ -1,12 +1,12 @@
 # Permissions for ozone sdk services
 PRODUCT_COPY_FILES += \
-    vendor/ozone/config/permissions/org.ozone.audio.xml:system/etc/permissions/org.ozone.audio.xml \
-    vendor/ozone/config/permissions/org.ozone.livedisplay.xml:system/etc/permissions/org.ozone.livedisplay.xml \
-    vendor/ozone/config/permissions/org.ozone.performance.xml:system/etc/permissions/org.ozone.performance.xml \
-    vendor/ozone/config/permissions/org.ozone.profiles.xml:system/etc/permissions/org.ozone.profiles.xml \
-    vendor/ozone/config/permissions/org.ozone.statusbar.xml:system/etc/permissions/org.ozone.statusbar.xml \
-    vendor/ozone/config/permissions/org.ozone.telephony.xml:system/etc/permissions/org.ozone.telephony.xml \
-    vendor/ozone/config/permissions/org.ozone.weather.xml:system/etc/permissions/org.ozone.weather.xml
+    vendor/ozone/config/permissions/org.ozone.audio.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.ozone.audio.xml \
+    vendor/ozone/config/permissions/org.ozone.livedisplay.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.ozone.livedisplay.xml \
+    vendor/ozone/config/permissions/org.ozone.performance.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.ozone.performance.xml \
+    vendor/ozone/config/permissions/org.ozone.profiles.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.ozone.profiles.xml \
+    vendor/ozone/config/permissions/org.ozone.statusbar.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.ozone.statusbar.xml \
+    vendor/ozone/config/permissions/org.ozone.telephony.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.ozone.telephony.xml \
+    vendor/ozone/config/permissions/org.ozone.weather.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.ozone.weather.xml
 
 # CM Platform Library
 PRODUCT_PACKAGES += \

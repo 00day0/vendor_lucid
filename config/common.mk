@@ -35,54 +35,57 @@ endif
 PRODUCT_COPY_FILES += \
     vendor/ozone/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
     vendor/ozone/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/ozone/prebuilt/common/bin/50-ozone.sh:system/addon.d/50-ozone.sh \
-    vendor/ozone/prebuilt/common/bin/blacklist:system/addon.d/blacklist
+    vendor/ozone/prebuilt/common/bin/50-ozone.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-ozone.sh \
+    vendor/ozone/prebuilt/common/bin/blacklist:$(TARGET_COPY_OUT_SYSTEM)/addon.d/blacklist
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/ozone/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+    vendor/ozone/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/ozone/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/ozone/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 
 # Ozone-specific broadcast actions whitelist
 PRODUCT_COPY_FILES += \
-    vendor/ozone/config/permissions/ozone-sysconfig.xml:system/etc/sysconfig/ozone-sysconfig.xml
+    vendor/ozone/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
-    vendor/ozone/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
+    vendor/ozone/config/permissions/ozone-sysconfig.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/ozone-sysconfig.xml
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/ozone/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/ozone/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/ozone/prebuilt/common/etc/init.d/00banner:$(TARGET_COPY_OUT_SYSTEM)/etc/init.d/00banner \
+    vendor/ozone/prebuilt/common/bin/sysinit:$(TARGET_COPY_OUT_SYSTEM)/bin/sysinit
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # userinit support
 PRODUCT_COPY_FILES += \
-    vendor/ozone/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
+    vendor/ozone/prebuilt/common/etc/init.d/90userinit:$(TARGET_COPY_OUT_SYSTEM)/etc/init.d/90userinit
 endif
 
-# Copy all Ozone-specific init rc files
+# Copy all Lineage-specific init rc files
 $(foreach f,$(wildcard vendor/ozone/prebuilt/common/etc/init/*.rc),\
-	$(eval PRODUCT_COPY_FILES += $(f):system/etc/init/$(notdir $f)))
+	$(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/ozone/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
+    vendor/ozone/prebuilt/common/lib/content-types.properties:$(TARGET_COPY_OUT_SYSTEM)/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+    frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.sip.voip.xml
 
 # Enable wireless Xbox 360 controller support
 PRODUCT_COPY_FILES += \
-    frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl
+    frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_0719.kl
 
 # This is Ozone!
 PRODUCT_COPY_FILES += \
-    vendor/ozone/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.ozone.android.xml
+    vendor/ozone/config/permissions/org.ozone.android.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.ozoneos.android.xml
 
-# Include Ozone audio files
-include vendor/ozone/config/ozone_audio.mk
+# Enforce privapp-permissions whitelist
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.control_privapp_permissions=enforce
 
 # Include AOSP audio files
 include vendor/ozone/config/aosp_audio.mk
