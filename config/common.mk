@@ -99,8 +99,6 @@ PRODUCT_PACKAGES += \
 # Required CM packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
-    CMAudioService \
-    CMParts \
     Development \
     Profiles \
     WeatherManagerService
@@ -116,26 +114,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
-
-# Custom CM packages
-PRODUCT_PACKAGES += \
-    AudioFX \
-    CMSettingsProvider \
-    CMUpdater \
-    CyanogenSetupWizard \
-    Eleven \
-    ExactCalculator \
-    LiveLockScreenService \
-    LockClock \
-    Screencast \
-    SoundRecorder \
-    Trebuchet \
-    WallpaperPicker \
-    WeatherProvider
-
-# Exchange support
-PRODUCT_PACKAGES += \
-    Exchange2
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \
