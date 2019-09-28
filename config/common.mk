@@ -124,14 +124,6 @@ PRODUCT_PACKAGES += \
 # Custom Ozone packages
 PRODUCT_PACKAGES += \
     AudioFX \
-    CMSettingsProvider \
-    CMUpdater \
-    OzoneSetupWizard \
-    Eleven \
-    ExactCalculator \
-    Jelly \
-    LockClock \
-    Trebuchet \
     WallpaperPicker \
     WeatherProvider
 
