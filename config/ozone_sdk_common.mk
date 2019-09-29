@@ -14,11 +14,6 @@ PRODUCT_PACKAGES += \
     org.ozone.platform \
     org.ozone.platform.xml
 
-# CM Hardware Abstraction Framework
-PRODUCT_PACKAGES += \
-    org.ozone.hardware \
-    org.ozone.hardware.xml
-
 # JNI Libraries
 PRODUCT_PACKAGES += \
     libozone-sdk_platform_jni
