@@ -30,7 +30,7 @@ ifndef OZONE_PLATFORM_SDK_VERSION
   # the SDK are released.  It should only be incremented when the APIs for
   # the new release are frozen (so that developers don't write apps against
   # intermediate builds).
-  OZONE_PLATFORM_SDK_VERSION := 7
+  OZONE_PLATFORM_SDK_VERSION := 8
 endif
 
 ifndef OZONE_PLATFORM_REV
