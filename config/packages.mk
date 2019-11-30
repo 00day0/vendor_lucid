@@ -16,3 +16,7 @@ ADDITIONAL_FONTS_FILE := vendor/lucid/prebuilt/common/fonts/google-sans.xml
 PRODUCT_PACKAGES += \
     wellbeingconf \
     googleconf
+
+# Launcher
+PRODUCT_PACKAGES += \
+    Launcher3
