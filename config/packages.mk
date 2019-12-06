@@ -23,4 +23,5 @@ PRODUCT_PACKAGES += \
 
 #ThemePicker
 PRODUCT_PACKAGES += \
-    ThemePicker
+    ThemePicker \
+    LucidThemesStub
