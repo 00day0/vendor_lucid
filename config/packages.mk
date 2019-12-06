@@ -20,3 +20,7 @@ PRODUCT_PACKAGES += \
 # Launcher
 PRODUCT_PACKAGES += \
     Launcher3
+
+#ThemePicker
+PRODUCT_PACKAGES += \
+    ThemePicker
